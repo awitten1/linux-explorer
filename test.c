@@ -16,7 +16,7 @@ int main() {
         pid_t my_pid = getpid();
         pid_t parent_pid = getppid();
         printf("child pid %d, parent pid %d\n", my_pid, parent_pid);
-        sleep(600);
+        sleep(60);
     }
     return 0;
 }
