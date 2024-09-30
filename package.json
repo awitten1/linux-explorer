@@ -1,4 +1,8 @@
 {
   "name": "linux-explorer",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "node-addon-api": "^8.1.0",
+    "node-api-headers": "^1.3.0"
+  }
 }

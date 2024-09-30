@@ -2,6 +2,11 @@
 
 import * as fs from 'node:fs/promises';
 
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+
+const ioctl = require('./build/ioctl_js');
+
 class Pids {
   constructor() {
     this.pids = new Map()
@@ -76,6 +81,8 @@ class Process {
 async function main() {
 
   const pids = new Pids()
+
+  console.log(ioctl.add(2, 3))
 
   try {
     const dir = await fs.opendir('/proc');
