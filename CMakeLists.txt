@@ -5,6 +5,8 @@ project(ioctl_js LANGUAGES CXX)
 
 set (CMAKE_CXX_STANDARD 11)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 add_library(ioctl_js MODULE src/ioctl.cpp)
 
 execute_process(COMMAND node -p "require('node-addon-api').include_dir.trim()" OUTPUT_VARIABLE NODE_CXX_API_PATH)
