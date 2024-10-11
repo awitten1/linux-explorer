@@ -24,8 +24,8 @@ Napi::Value Ioctl(const Napi::CallbackInfo& info) {
     return env.Null();
   }
 
-  double fd = info[0].As<Napi::Number>().Int64Value();
-  double op = info[1].As<Napi::Number>().Int64Value();
+  int64_t fd = info[0].As<Napi::Number>().Int64Value();
+  int64_t op = info[1].As<Napi::Number>().Int64Value();
 
   int ret = ioctl(fd, op);
   if (ret == -1) {

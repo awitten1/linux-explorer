@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ns-logger
+spec:
+  hostPID: true
+  containers:
+  - name: ns-logger
+    image: awitten007/ns-logger:3
+    securityContext:
+      capabilities:
+        add: ["SYS_ADMIN", "SYS_PTRACE"]
+    ports:
+    - containerPort: 8080

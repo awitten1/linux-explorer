@@ -39,6 +39,7 @@ class Pids {
     this.nsToPidList = nsToPidList
     const nsToParentNs = new Map()
     for (const ns of this.nsToPidList) {
+      console.log(ns)
       const ppid = await this.nsToPidList.get(ns[0])[0].getPpid()
       if (ppid != 0) {
         nsToParentNs[ns[0]] = await (new Process(ppid)).getPidNs()
@@ -90,6 +91,14 @@ class Process {
     }
     throw new Error('PPid field not found in /proc/<pid>/status')
   }
+
+  // Get cmdline invocation of process
+  async getCmdLine() {
+    const fh = await fs.open(`/proc/${this.pid}/cmdline`)
+    const str = await fh.readFile({ encoding: 'utf-8' })
+    return str.split('\0').join(' ')
+  }
+
 }
 
 async function main() {
